@@ -1,0 +1,11 @@
+html{
+	width: 400px;
+	height: 300px;
+}
+
+.heading{
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+

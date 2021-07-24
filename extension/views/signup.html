@@ -1,0 +1,16 @@
+<h4 class = "heading text-center">Create a new account</h4>
+
+<div class="container">
+       
+    <div class="form-group">
+        <input type="text" class="form-control" name="name" ng-model="formData.email">
+        <br/>
+        <input type="password" class="form-control" name="password" ng-model="formData.password">
+        <br/>
+    </div>
+    
+    <a ng-click="signup(formData)" class="btn btn-block btn-info">Sign up</a>
+    <br />
+    <a ui-sref="login">Already a user? Login</a>
+
+</div>
