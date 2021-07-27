@@ -3,6 +3,12 @@
    "name": "Amazon price drop",
    "description": "Notifies about price drops on wishlisted products on Amazon",
    "version": "1.0",
+   "content_scripts": [
+		{
+			"matches": ["https://www.amazon.in/*"],
+			"js": ["js/jquery-3.6.0.min.js", "./content.js"]
+		}
+	],
    "background": {
        "scripts": ["js/jquery-3.6.0.min.js", "./background.js"]
    },

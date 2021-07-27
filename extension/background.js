@@ -1,7 +1,9 @@
+// const { connection } = require("mongoose");
+
 console.log("Background script is running !!");
 
 $.ajax({
-    url: "http://localhost:8000/products",
+    url: "http://localhost:3000/products",
     data: {test: "This is test data"},
     type: 'POST',
     success: (res)=>{
@@ -24,7 +26,7 @@ chrome.runtime.onMessage.addListener(
             case "login":
             console.log("login data got from popup is: ", msg.data);
             $.ajax({
-                url: "http://localhost:8000/user/login",
+                url: "http://localhost:3000/user/login",
                 data: msg.data,
                 type: 'POST',
                 headers: {
@@ -45,7 +47,7 @@ chrome.runtime.onMessage.addListener(
             case "signup":
             console.log("signup data got from popup is: ", msg.data);
             $.ajax({
-                url: "http://localhost:8000/user/signup",
+                url: "http://localhost:3000/user/signup",
                 data: msg.data,
                 type: 'POST',
                 headers: {
@@ -61,6 +63,29 @@ chrome.runtime.onMessage.addListener(
             });
             return true;
             break;
+            
+            case "checkPriceDrop":
+                console.log('message: ', msg);
+                chrome.tabs.create({url: "https://www.amazon.in/gp/registry/wishlist?"});
+                return true; 
+                break;
+
+            case "fullWishlist":
+                console.log('wishlist recieved: ', msg);
+                $.ajax({
+                    url: "http://localhost:3000/product/wishlist",
+                    data: {data: msg.data, user: getStorageItem('user')},
+                    type: 'POST',
+                    success: (res)=>{
+                        console.log('response: ', res);
+                        sendResponse(res);
+                    },
+                    error : (res)=>{
+                        console.log('response: ', res)
+                    }
+                });
+                return true;
+                break;
             
             default:
                 console.log("No data recieved");

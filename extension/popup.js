@@ -62,3 +62,21 @@ amazonextension.controller("popup_controller", ['$scope', '$state', ($scope, $st
     }
 
 }]);
+
+
+amazonextension.controller("Scraper", ['$scope', '$state', ($scope, $state)=>{
+
+       $scope.checkPriceDrop = (user)=>{
+            chrome.runtime.sendMessage({type: "checkPriceDrop", user: user},
+            (res)=>{
+              console.log("Checking price drop response: ", res);
+              if(res.error){
+                let em = response.data.responseJSON.error;
+                console.log('Error is :',em);
+                $scope.errorMessage = em;
+                $scope.error = true; 
+              }
+            });
+       }
+   
+}]);
