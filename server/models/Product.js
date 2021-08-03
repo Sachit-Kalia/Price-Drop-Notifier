@@ -16,7 +16,7 @@ const ProductSchema = mongoose.Schema({
          type: String
      },
      addedBy: {
-        type: String,
+        type: String
      }
     
 

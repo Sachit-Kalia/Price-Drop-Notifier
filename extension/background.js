@@ -2,17 +2,17 @@
 
 console.log("Background script is running !!");
 
-$.ajax({
-  url: "http://localhost:3000/products",
-  data: { test: "This is test data" },
-  type: "POST",
-  success: (res) => {
-    console.log("response: ", res);
-  },
-  error: (res) => {
-    console.log("response: ", res);
-  },
-});
+// $.ajax({
+//   url: "http://localhost:3000/products",
+//   data: { test: res},
+//   type: "POST",
+//   success: (resp) => {
+//     console.log("response: ", resp);
+//   },
+//   error: (resp) => {
+//     console.log("response: ", resp);
+//   },
+// });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   switch (msg.type) {
@@ -53,6 +53,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         },
         success: (res) => {
           console.log("response: ", res);
+          setStorageItem("dropList", res);
           sendResponse(res);
         },
         error: (res) => {
@@ -74,10 +75,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       console.log("wishlist recieved: ", msg);
       $.ajax({
         url: "http://localhost:3000/product/wishlist",
-        data: { data: msg.data, email: getStorageItem("user").email },
+        data: { data: msg.data, email: getStorageItem("user") },
         type: "POST",
         success: (res) => {
-          console.log("response: ", res);
+          console.log("response: ", res);  
           sendResponse(res);
         },
         error: (res) => {

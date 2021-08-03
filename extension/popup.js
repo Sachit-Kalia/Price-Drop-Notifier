@@ -14,6 +14,10 @@ amazonextension.config(function ($stateProvider, $urlRouterProvider) {
       .state("signup", {
         url: "/signup",
         templateUrl: "./views/signup.html",
+      })
+      .state("show", {
+        url: "/show",
+        templateUrl: "./views/show.html",
       });
 
       $urlRouterProvider.otherwise("/login");
@@ -78,5 +82,13 @@ amazonextension.controller("Scraper", ['$scope', '$state', ($scope, $state)=>{
               }
             });
        }
+
+      //  $scope.showProductsDrop = ()=>{
+      //       chrome.runtime.sendMessage({type: "showProductsDrop"},
+      //       (res)=>{
+      //            console.log("Showing responses: ", res);
+      //            $scope.type = "show";
+      //       })
+      //  }
    
 }]);

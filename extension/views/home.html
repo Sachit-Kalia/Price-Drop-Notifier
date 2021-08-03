@@ -1,7 +1,10 @@
 <div ng-controller = "Scraper">
-    <div class="jumbotron text-center">
-        <h2>Price Drop Notifier</h2>
-        <p>Hi there {{name}}, what would you like to scrape from Amazon Today?</p>   
+    <div class="text-center" style="padding-left: 20px; padding-right: 20px;">
+        <strong>
+            <h2 style="color:rgba(144, 33, 33, 0.698)">Price Drop Notifier</h2>
+        </strong>
+        <br/>
+        <h4>Hi <strong>{{name}}</strong>, do you want to check if the price of any of the wishlisted products is dropped?</h4>   
         <br/>
         <a ng-click="checkPriceDrop()" class = "btn btn-block btn-danger">Check price drop</a>
     </div>

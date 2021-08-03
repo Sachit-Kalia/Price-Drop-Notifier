@@ -17,13 +17,7 @@ app.use(cors({origin : "*"}));
 app.use("/user", user);
 app.use("/product", product);
 
-app.post("/products", (req, res) => {
-  console.log("request on products route: ", req.body.test);
-});
 
-// app.post("/login", (req,res)=>{
-//   console.log("request from login route: ", req.body.test);
-// });
 
 const port = process.env.PORT || 3000;
 
